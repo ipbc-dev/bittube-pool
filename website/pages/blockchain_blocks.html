@@ -1,0 +1,211 @@
+<style>
+    .blocksStatHolder > span{
+        display: inline-block;
+        border-radius: 5px;
+        padding: 1px 9px;
+        border: 1px solid #e5e5e5;
+        margin: 2px;
+    }
+    .blocksStatHolder > span > span{
+        font-weight: bold;
+    }
+    #blocks_rows > tr > td{
+        vertical-align: middle;
+        font-family: 'Inconsolata', monospace;
+        font-size: 0.95em;
+        text-align: center;
+    }
+    .luckGood{
+        color: darkgreen;
+    }
+    .luckBad{
+        color: darkred;
+    }
+</style>
+
+<div class="blocksStatHolder">
+    <span class="bg-primary">Total Blocks: <span id="networkLastReward"></span></span>
+    <span class="bg-primary">Hash Rate: <span id="networkHashrate"></span></span>
+    <span class="bg-primary">Difficulty: <span id="networkDifficulty"></span></span>
+</div>
+
+<hr>
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th><i class="fa fa-bars"></i> Height</th>
+            <th><i class="fa fa-unlock-alt"></i> Size</th>
+            <th><i class="fa fa-paw"></i> Block Hash</th>
+            <th><i class="fa fa-clock-o"></i> Time Found</th>
+            <th><i class="fa fa-bars"></i> Transactions</th>
+        </tr>
+        </thead>
+        <tbody id="blocks_rows">
+
+        </tbody>
+    </table>
+</div>
+
+<p class="text-center">
+    <button type="button" class="btn btn-default" id="loadMoreBlocks">Load More</button>
+</p>
+
+<script>
+
+    currentPage = {
+        destroy: function(){
+            if (xhrGetBlocks) xhrGetBlocks.abort();
+        },
+        init: function(){
+        },
+        update: function(){
+            updateText('networkLastReward', lastStats.network.height.toString());
+            updateText('networkHashrate', getReadableHashRateString(lastStats.network.difficulty / lastStats.config.coinDifficultyTarget) + '/sec');
+            updateText('networkDifficulty', lastStats.network.difficulty.toString());
+            renderInitialBlocks();
+        }
+    };
+
+    var xhrGetBlocks;
+    $('#loadMoreBlocks').click(function(){
+        if (xhrGetBlocks) xhrGetBlocks.abort();
+        xhrGetBlocks = $.ajax({
+            url: api_blockexplorer + '/json_rpc',
+            method: "POST",
+            data: JSON.stringify({
+                jsonrpc:"2.0",
+                id: "test",
+                method:"f_blocks_list_json",
+                params: {
+                    height: $('#blocks_rows').children().last().data('height')
+                }
+            }),
+            dataType: 'json',
+            cache: 'false',
+            success: function(data){
+                renderBlocks(data.result.blocks);
+            }
+        });
+    });
+
+    function renderInitialBlocks(){
+        if (xhrGetBlocks) xhrGetBlocks.abort();
+        xhrGetBlocks = $.ajax({
+            url: api_blockexplorer + '/json_rpc',
+            method: "POST",
+            data: JSON.stringify({
+                jsonrpc:"2.0",
+                id: "test",
+                method:"f_blocks_list_json",
+                params: {
+                    height: lastStats.network.height
+                }
+            }),
+            dataType: 'json',
+            cache: 'false',
+            success: function(data){
+                renderBlocks(data.result.blocks);
+            }
+        });
+    };
+
+
+    function parseBlock(height, serializedBlock){
+        var parts = serializedBlock.split(':');
+        var block = {
+            height: parseInt(height),
+            hash: parts[0],
+            time: parts[1],
+            difficulty: parseInt(parts[2]),
+            shares: parseInt(parts[3]),
+            orphaned: parts[4],
+            reward: parts[5]
+        };
+
+        var toGo = lastStats.config.depth - (lastStats.network.height - block.height);
+        block.maturity = toGo < 1 ? '' : (toGo + ' to go');
+
+        switch (block.orphaned){
+            case '0':
+                block.status = 'unlocked';
+                break;
+            case '1':
+                block.status = 'orphaned';
+                break;
+            default:
+                block.status = 'pending';
+                break;
+        }
+
+        return block;
+    }
+
+
+
+    function getBlockRowElement(block, jsonString){
+
+        var blockStatusClasses = {
+            'pending': '',
+            'unlocked': 'success',
+            'orphaned': 'danger'
+        };
+
+        var row = document.createElement('tr');
+        row.setAttribute('data-json', jsonString);
+        row.setAttribute('data-height', block.height);
+        row.setAttribute('id', 'blockRow' + block.height);
+        row.setAttribute('title', block.hash);
+        row.className = 'pending';
+//        row.className = blockStatusClasses[block.status];
+        var columns =
+            '<td>' + block.height + '</td>' +
+            '<td>' + block.cumul_size + '</td>' +
+            '<td>' + formatBlockLink(block.hash) + '</td>' +
+            '<td>' + formatDate(block.timestamp) + '</td>' +
+            '<td>' + block.tx_count + '</td>';
+
+        row.innerHTML = columns;
+
+        return row;
+    }
+
+
+    function renderBlocks(blocksResults){
+
+        var $blocksRows = $('#blocks_rows');
+
+        for (var i = 0; i < blocksResults.length; i ++){
+
+            var block = blocksResults[i];
+
+            var blockJson = JSON.stringify(block);
+
+            var existingRow = document.getElementById('blockRow' + block.height);
+
+            if (existingRow && existingRow.getAttribute('data-json') !== blockJson){
+                $(existingRow).replaceWith(getBlockRowElement(block, blockJson));
+            }
+            else if (!existingRow){
+
+                var blockElement = getBlockRowElement(block, blockJson);
+
+                var inserted = false;
+                var rows = $blocksRows.children().get();
+                for (var f = 0; f < rows.length; f++) {
+                    var bHeight = parseInt(rows[f].getAttribute('data-height'));
+                    if (bHeight < block.height){
+                        inserted = true;
+                        $(rows[f]).before(blockElement);
+                        break;
+                    }
+                }
+                if (!inserted)
+                    $blocksRows.append(blockElement);
+            }
+
+        }
+    }
+
+</script>
