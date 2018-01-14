@@ -1,6 +1,6 @@
 var api = "https://pool.ipbc.io:8119";
 
-var api_blockexplorer = "http://pool.ipbc.io:24182";
+var api_blockexplorer = "https://explorer.ipbc.io:8120";
 
 var poolHost = "pool.ipbc.io";
 
