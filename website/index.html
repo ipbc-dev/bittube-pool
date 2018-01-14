@@ -21,65 +21,9 @@
     <script src="config.js"></script>
     <script src="custom.js"></script>
 
-    <style>
-        #coinName{
-            text-transform: capitalize;
-        }
-        body {
-            padding-top: 65px;
-            padding-bottom: 80px;
-            overflow-y: scroll;
-        }
-        .container{
-            font-size: 1.1em;
-        }
-        #loading{
-            font-size: 2em;
-        }
-        .stats {
-            margin-bottom: 10px;
-            margin-top: 5px;
-        }
-        .stats:last-child{
-            width: auto;
-        }
-        .stats > h3 > i{
-            font-size: 0.80em;
-            width: 21px;
-        }
-        .stats > div{
-            padding: 5px 0;
-        }
-        .stats > div > .fa {
-            width: 25px;
-        }
-        .stats > div > span:first-of-type{
-            font-weight: bold;
-        }
-        #stats_updated{
-            opacity: 0;
-            float: right;
-            margin-left: 30px;
-            color: #e8e8e8;
-            line-height: 47px;
-            font-size: 0.9em;
-        }
-
-        footer{
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background-color: #f5f5f5;
-        }
-
-        footer > div{
-            margin: 10px auto;
-            text-align: center;
-        }
-
-    </style>
     
     <link href="custom.css" rel="stylesheet">
+    <link href="ipbc.css" rel="stylesheet">
 
 </head>
 <body>
@@ -313,7 +257,7 @@
     }
 
     function updateIndex(){
-        updateText('coinName', lastStats.config.coin);
+        //updateText('coinName', lastStats.config.coin);
         var title = $(".navbar-brand").text();
         $("title").text(title.charAt(0).toUpperCase() + title.slice(1));
         updateText('poolVersion', lastStats.config.version);
@@ -354,7 +298,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand active" href="#"><span id="coinName"></span> Mining Pool</a>
+            <!-- <a class="navbar-brand active" href="#"><span id="coinName"></span> Mining Pool</a> -->
+            <img src="img/ipbc_logo.svg" class="ipbc_logo">
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
