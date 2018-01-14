@@ -150,3 +150,20 @@ td > a{
 #blocks_rows > tr .success{
     background-color: #86af49 !important;
 }
+
+#calcHashHolder > .input-group > .input-group-addon{
+    background-color: #86af49 !important;
+    border-color: #86af49 !important;
+    border-radius: 0px;
+}
+
+input[type="text"], input[type="number"]{
+    border-radius: 0px !important;
+    border: 1px solid #cccccc;
+}
+#calcHashUnits{
+    border-radius: 0px !important;
+}
+#calcHashUnits > li > a{
+    color: #555555 !important;
+}
