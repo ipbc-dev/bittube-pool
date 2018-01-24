@@ -1,12 +1,12 @@
-var api = "https://pool.ipbc.io:8119";
+var api = "http://yourhost:8119";
 
 var api_blockexplorer = "https://explorer.ipbc.io:8120";
 
-var poolHost = "pool.ipbc.io";
+var poolHost = "yourhost";
 
 var irc = "irc.freenode.net/#ipbc";
 
-var email = "hello@ipbc.io";
+var email = "yourmail";
 
 var cryptonatorWidget = ["{symbol}-BTC", "{symbol}-USD", "{symbol}-EUR"];
 
@@ -18,6 +18,8 @@ var transactionExplorer = "/?hash={id}#blockchain_transaction";
 
 var themeCss = "themes/default-theme.css";
 
+
+//add here your pool address
 var networkStat = {
     "ipbc": [
         ["pool.ipbc.io", "https://pool.ipbc.io:8119"]
