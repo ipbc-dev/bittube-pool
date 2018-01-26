@@ -29,7 +29,9 @@
 <body>
 <script>
 
-
+    $(document).ready(function(e){
+        $('#poolModal').modal('show');
+    })
     var docCookies = {
         getItem: function (sKey) {
             return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
@@ -358,6 +360,64 @@
     <p id="loading" class="text-center"><i class="fa fa-circle-o-notch fa-spin"></i></p>
 
 </div>
+
+  <!-- START LOGIN MODAL  -->
+    <div class="modal" id="poolModal" tabindex="-1" role="dialog" aria-labelledby="addHostLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <!-- modal dialog -->
+        <div class="modal-dialog" role="document">
+            <!-- modal content -->
+            <div class="modal-content">
+                 <!-- modal header -->
+                <div class="modal-header modal-headerLogin">
+                    <!-- div 12 for modal header -->
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no_pading">
+
+                           <label class="titleModal">IMPORTANT NOTICE:</label>
+                        </div>
+                    </div>
+                <!-- end div 12 for modal header -->
+                </div>
+                <!-- end modal header -->
+
+                <!-- modal body -->
+                <div class="modal-body noPadding_top  paddingLR20">
+                    <!-- start div 12 needs to login -->
+                    <!-- end div 12 needs to login -->
+                    <div class="row padding15 divContentLoginModal">                 
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no_pading">
+
+                            <br>
+                            THIS IS JUST A TEST BLOCKCHAIN.
+                            <br>
+                            MINING IT WILL PRODUCE NO REVENUE.
+                            <br>
+                            THE LIVE BLOCKCHAIN WILL BE AVAILABLE ON FEBRUARY 1ST 2018.
+                            <br><br>
+                            THANK YOU.
+
+                        </div>
+                    </div>
+                    <!-- end div class row -->
+
+
+                </div>
+                <!-- end div modal body -->
+                <!-- start modal footer -->
+                <div class="modal-footer footerModal">
+                    <button type="button" class="close modalClose" data-dismiss="modal" aria-label="Close">
+                                Close
+                    </button>
+                  
+                </div>
+                <!-- end modal footer -->
+            </div>
+            <!-- end div modal content -->
+        </div>
+        <!-- end div modal dialog -->
+    </div>
+    <!-- END LOGIN MODAL -->
 
 <footer>
     <div class="text-muted">

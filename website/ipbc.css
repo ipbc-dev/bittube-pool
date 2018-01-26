@@ -167,3 +167,30 @@ input[type="text"], input[type="number"]{
 #calcHashUnits > li > a{
     color: #555555 !important;
 }
+
+.modalClose{
+background-color: #86af49 !important;
+    border: 1px solid #86af49 !important;
+    color: #ffffff !important;
+    opacity: 1;
+    font-size: 15px;
+    font-weight: normal;
+    height: 34px;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+}
+
+.footerModal{
+    border: none;
+}
+
+.modal-content{
+    border-radius: 0px;
+}
+
+.titleModal{
+font-size: 21px;
+    color: #86af49;
+    font-weight: normal;
+    margin-bottom: 0px;
+}
