@@ -21,7 +21,9 @@ var themeCss = "themes/default-theme.css";
 
 //add here your pool address
 var networkStat = {
-    "ipbc": [
-        ["pool.ipbc.io", "https://pool.ipbc.io:8119"]
-    ]
+  "ipbc": [
+    ["pool.ipbc.io", "https://pool.ipbc.io:8119"],
+    ["support.ipbc.io", "https://support.ipbc.io:8119"],
+    ["ipbc.cryptonight.me", "https://ipbc.cryptonight.me:8009"],
+  ]
 };
