@@ -14,7 +14,8 @@
         "cli-color": "*",
         "dateformat": "*",
         "base58-native": "*",
-        "cryptonote-util": "git://github.com/ipbc-dev/node-cryptonote-util.git"
+        "cryptonote-util": "git://github.com/ipbc-dev/node-cryptonote-util.git",
+        "node-cn-ipbc-hash": "git://github.com/ipbc-dev/node-cn-ipbc-hash.git"
     },
     "engines": {
         "node": ">=0.10"
