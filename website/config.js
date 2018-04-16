@@ -25,5 +25,6 @@ var networkStat = {
     ["pool.ipbc.io", "https://pool.ipbc.io:8119"],
     ["support.ipbc.io", "https://support.ipbc.io:8119"],
     ["ipbc.fatpanda.club", "https://api-web.fatpanda.club:8009"],
+    ["ipbc.iccob.com", "http://api.iccob.com/ipbc"],
   ]
 };
