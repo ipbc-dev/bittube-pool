@@ -15,7 +15,7 @@
         "dateformat": "*",
         "base58-native": "*",
         "cryptonote-util": "git://github.com/ipbc-dev/node-cryptonote-util.git",
-        "node-multi-hashing-aesni": "git://github.com/ipbc-dev/node-multi-hashing-aesni.git"
+        "multi-hashing": "git://github.com/ipbc-dev/node-multi-hashing-aesni.git"
     },
     "engines": {
         "node": ">=0.10"
