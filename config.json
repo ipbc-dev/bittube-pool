@@ -1,6 +1,6 @@
 {
-    "coin": "IPBC",
-    "symbol": "IPBC",
+    "coin": "BitTube",
+    "symbol": "TUBE",
     "coinUnits": 100000000,
     "coinDifficultyTarget": 120,
 

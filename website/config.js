@@ -21,7 +21,7 @@ var themeCss = "themes/default-theme.css";
 
 //add here your pool address
 var networkStat = {
-  "ipbc": [
+  "bittube": [
     ["pool.ipbc.io", "https://pool.ipbc.io:8119"],
     ["support.ipbc.io", "https://support.ipbc.io:8119"],
     ["ipbc.fatpanda.club", "https://api-web.fatpanda.club:8009"],
