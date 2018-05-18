@@ -1,1 +1,1 @@
-# ipbc-pool
+# bittube-pool
