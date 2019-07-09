@@ -1,23 +1,32 @@
 {
-    "name": "forknote-pool",
-    "version": "0.0.1",
+    "name": "cryptonote-nodejs-pool",
+    "version": "1.4.0",
     "license": "GPL-2.0",
-    "authors": "Matthew Little",
+    "Original author": "Daniel Vandal",
+    "Maintained by": "Musclesonvacation",
     "repository": {
         "type": "git",
-        "url": "https://github.com/forknote/forknote-pool"
+        "url": "https://github.com/muscleman/cryptonote-nodejs-pool.git"
     },
     "dependencies": {
-        "bignum": "*",
         "async": "1",
-        "redis": "*",
-        "cli-color": "*",
-        "dateformat": "*",
         "base58-native": "*",
-        "cryptonote-util": "git+https://github.com/ipbc-dev/node-cryptonote-util.git",
-        "multi-hashing": "git+https://github.com/ipbc-dev/node-multi-hashing.git"
+        "bignum": "*",
+        "cli-color": "*",
+        "cryptoforknote-util": "git://github.com/MoneroOcean/node-cryptoforknote-util.git",
+        "cryptonight-hashing": "git://github.com/MoneroOcean/node-cryptonight-hashing.git",
+        "dateformat": "*",
+        "mailgun.js": "*",
+        "node-telegram-bot-api": "*",
+        "nodemailer": "2.7.2",
+        "nodemailer-sendmail-transport": "*",
+        "redis": "*",
+        "socket.io": "^2.1.1",
+        "time-ago": "*",
+        "request": "^2.88.0",
+        "request-promise-native": "^1.0.5"
     },
     "engines": {
-        "node": ">=0.10"
+        "node": ">=8.11.3"
     }
 }
