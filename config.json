@@ -90,7 +90,16 @@
             "weight": 300,
             "blockTime": 60,
             "lastBlockCheckRate": 1
-         }
+        },
+        /* Anti-pool hopping protection can penalize the score for the first N minutes of a high-diff
+           connection. */
+        "antiHopping": {
+            "enabled": false, // Enables pool hopping penalties
+            "triggerDiff": 400000, // Only triggers for an initial connection difficulty of at least this much
+            "triggerMinutes": 15, // Only triggers if the connecting miner hasn't submitted in share in this many minutes
+            "penaltyMinutes": 10, // Penalizes the miner scores for this many minutes
+            "penaltyPercent": 50 // Reduces the miner scores by this percent
+        }
     },
 
     "payments": {
