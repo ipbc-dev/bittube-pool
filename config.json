@@ -29,6 +29,7 @@
         "clusterForks": "auto",
         "poolAddress": "*** address ***",
         "intAddressPrefix": "0x404f",
+        "subAddressPrefix": "0x3750",
         "blockRefreshInterval": 1000,
         "minerTimeout": 900,
         "sslCert": "/cert.pem",

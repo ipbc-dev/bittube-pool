@@ -246,11 +246,14 @@ Explanation for each field:
        the 'forks' field can be a number for how many forks will be spawned. */
     "clusterForks": "auto",
 
-    /* Address where block rewards go, and miner payments come from. */
-    "poolAddress": "GBqRuitSoU3PFPBAkXMEnLdBRWXH4iDSD6RDxnQiEFjVJhWUi1UuqfV5EzosmaXgpPGE6JJQjMYhZZgWY8EJQn8jQTsuTit",
+        /* Address where block rewards go, and miner payments come from. */
+    "poolAddress": "bxdaNPkW77u6KYJuYNDSJpfocTXjVpZ7mMAsoNELySdnbAr8U6aMvnULosC456Kk7NRCAS2Xe7o14NF7bbPKyVta39KPYFia3",
 
     /* This is the integrated address prefix used for miner login validation. */
-    "intAddressPrefix": 91,
+    "intAddressPrefix": "0x404f",
+
+    /* This is the Subaddress prefix used for miner login validation. */
+    "subAddressPrefix": "0x3750",
 
     /* Poll RPC daemons for new blocks every this many milliseconds. */
     "blockRefreshInterval": 1000,
