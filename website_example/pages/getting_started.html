@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-sm-6">
         <h3><span data-tkey="connectionDetails">Connection Details</span></h3>
-        <div class="card padding-l-10 padding-r-10">
+        <div class="card padding-l-10 padding-r-10 padding-t-5 padding-b-5">
             <div class="stats">
                 <div><i class="fa fa-cloud"></i> <span data-tkey="miningPoolHost">Mining Pool Address</span>: <span id="miningPoolHost"></span></div>
                 <div><i class="fa fa-cubes"></i> <span data-tkey="cnAlgorithm">Algorithm</span>: <span id="cnAlgorithm"></span></div>
@@ -10,7 +10,7 @@
         </div>
 
         <h4 class="push-up-15"><span data-tkey="username">Username<span></h4>
-        <div class="card padding-l-10 padding-r-10">
+        <div class="card padding-l-10 padding-r-10 padding-t-5 padding-b-5">
             <div class="stats">
                 <div><i class="fa fa-key"></i> <span data-tkey="usernameDesc">This is your wallet address</span></div>
                 <div id="paymentId"><i class="fa fa-exchange"></i> <span data-tkey="paymentId">Exchange Payment ID</span>: <span><u data-tkey="address">address</u><span id="paymentIdSeparator">.</span><u data-tkey="addrPaymentId">paymentID</u></span></div>
@@ -19,7 +19,7 @@
         </div>
 	    
         <h4 class="push-up-15"><span data-tkey="password">Password</span></h4>
-        <div class="card padding-l-10 padding-r-10">
+        <div class="card padding-l-10 padding-r-10 padding-t-5 padding-t-5">
             <div class="stats">
                 <div><i class="fa fa-server"></i> <span data-tkey="passwordDesc">This is your worker name</span></div>
             </div>
@@ -57,9 +57,12 @@
 <h3><span data-tkey="miningApps">Mining Applications</span></h3>
 
 <!-- Configuration Generator -->
-<div class="card padding-15">
-    <p><span data-tkey="configGeneratorDesc">Generate your custom configuration to mine on our pool</span></p>
-    <div id="configGenerator" class="row">
+<div class="card ">
+     <div class="card-header">
+    <span data-tkey="configGeneratorDesc">Generate your custom configuration to mine on our pool</span>
+  </div>
+ <!--    <p><span data-tkey="configGeneratorDesc">Generate your custom configuration to mine on our pool</span></p> -->
+    <div id="configGenerator" class="row padding-15">
         <div class="col-md-12">
             <div class="input-group push-down-5">
                 <span class="input-group-addon"><i class="fa fa-link"></i></span>

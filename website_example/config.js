@@ -1,4 +1,4 @@
-var api = "http://poolhost:8117";
+var api = "http://localhost:8118";
 
 var email = "support@poolhost.com";
 var telegram = "https://t.me/YourPool";
