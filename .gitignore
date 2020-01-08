@@ -5,3 +5,5 @@ build/
 .idea/
 logs/
 website/
+custom_coins/
+*.swp

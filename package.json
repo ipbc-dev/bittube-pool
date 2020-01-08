@@ -23,8 +23,7 @@
         "redis": "*",
         "socket.io": "^2.1.1",
         "time-ago": "*",
-        "request": "^2.88.0",
-        "request-promise-native": "^1.0.5"
+        "turtlecoin-multi-hashing": "https://github.com/turtlecoin/node8-multi-hashing.git"
     },
     "engines": {
         "node": ">=8.11.3"

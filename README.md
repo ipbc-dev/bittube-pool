@@ -184,7 +184,7 @@ Explanation for each field:
 "poolHost": "your.pool.host",
 
 /* Used for storage in redis so multiple coins can share the same redis instance. */
-"coin": "graft",
+"coin": "graft", // Must match the parentCoin variable in config.js
 
 /* Used for front-end display */
 "symbol": "GRFT",
@@ -198,6 +198,9 @@ Explanation for each field:
 /* Coin network time to mine one block, see DIFFICULTY_TARGET constant in DAEMON_CODE/src/cryptonote_config.h */
 "coinDifficultyTarget": 120,
 
+"blockchainExplorer": "http://blockexplorer.arqma.com/block/{id}",  //used on blocks page to generate hyperlinks.
+"transactionExplorer": "http://blockexplorer.arqma.com/tx/{id}",    //used on the payments page to generate hyperlinks
+
 /* Set daemon type. Supported values: default, forknote (Fix block height + 1), bytecoin (ByteCoin Wallet RPC API) */
 "daemonType": "default",
 
@@ -210,7 +213,8 @@ Explanation for each field:
 "cnVariant": 1,
 "cnBlobType": 0,
 "includeHeight":false, /*true to include block.height in job to miner*/
-"includeAlgo":"cn/wow", /*wownero specific change to include algo in job to miner*/
+"includeAlgo":"cn/wow", /*wownero specific change to include algo in job to miner*/	"includeAlgo":"cn/wow", /*wownero specific change to include algo in job to miner*/
+"isRandomX": true,
 /* Logging */
 "logging": {
 
@@ -234,27 +238,39 @@ Explanation for each field:
         "colors": true
     }
 },
-/*Which Hashing Package to use: cryptonight-hashing=false, multi-hashing=true*/
-"hashingUtil":false,
+"childPools":[ {"poolAddress":"your wallet",
+                    "intAddressPrefix": null,
+                    "coin": "MCN",  	//must match COIN name in the child pools config.json
+                    "childDaemon": {
+                        "host": "127.0.0.1",
+                        "port": 26081
+                    },
+                    "pattern": "^Vdu",  //regex to identify which childcoin the miner specified in password. eg) Vdu is first 3 chars of a MCN wallet address.
+                    "blockchainExplorer": "https://explorer.mcn.green/?hash={id}#blockchain_block",
+                    "transactionExplorer": "https://explorer.mcn.green/?hash={id}#blockchain_transaction",
+                    "api": "https://multi-miner.smartcoinpool.net/apiMerged1",
+                    "enabled": true
+                    }
+]
 /* Modular Pool Server */
 "poolServer": {
     "enabled": true,
-
+    "mergedMining":false,
     /* Set to "auto" by default which will spawn one process/fork/worker for each CPU
        core in your system. Each of these workers will run a separate instance of your
        pool(s), and the kernel will load balance miners using these forks. Optionally,
        the 'forks' field can be a number for how many forks will be spawned. */
     "clusterForks": "auto",
 
-        /* Address where block rewards go, and miner payments come from. */
-    "poolAddress": "bxdaNPkW77u6KYJuYNDSJpfocTXjVpZ7mMAsoNELySdnbAr8U6aMvnULosC456Kk7NRCAS2Xe7o14NF7bbPKyVta39KPYFia3",
+    /* Address where block rewards go, and miner payments come from. */
+    "poolAddress": "your wallet",
 
     /* This is the integrated address prefix used for miner login validation. */
-    "intAddressPrefix": "0x404f",
-
+    "intAddressPrefix": 91,
+    
     /* This is the Subaddress prefix used for miner login validation. */
-    "subAddressPrefix": "0x3750",
-
+    "subAddressPrefix": 252,
+    
     /* Poll RPC daemons for new blocks every this many milliseconds. */
     "blockRefreshInterval": 1000,
 
@@ -322,6 +338,8 @@ Explanation for each field:
     "paymentId": {
         "addressSeparator": ".", // Character separator between <address> and <paymentID>
         "validation": true // Refuse login if non alphanumeric characters in <paymentID>
+        "validations": ["1,16", "64"], //regex quantity. range 1-16 characters OR exactly 64 character
+        "ban": true  // ban the miner for invalid paymentid
     },
 
     /* Feature to trust share difficulties from miners which can
@@ -347,15 +365,6 @@ Explanation for each field:
     "slushMining": {
         "enabled": false, // Enables slush mining. Recommended for pools catering to professional miners
         "weight": 300 // Defines how fast the score assigned to a share declines in time. The value should roughly be equivalent to the average round duration in seconds divided by 8. When deviating by too much numbers may get too high for JS.
-    },
-    /* Anti-pool hopping protection can penalize the score for the first N minutes of a high-diff
-           connection. */
-    "antiHopping": {
-        "enabled": false, /* Enables pool hopping penalties */
-        "triggerDiff": 400000, /* Only triggers for an initial connection difficulty of at least this much */
-        "triggerMinutes": 15, /* Only triggers if the connecting miner hasn't submitted in share in this many minutes */
-        "penaltyMinutes": 10, /* Penalizes the miner scores for this many minutes */
-        "penaltyPercent": 50 /* Reduces the miner scores by this percent */
     }
 },
 
@@ -422,7 +431,6 @@ Explanation for each field:
 "wallet": {
     "host": "127.0.0.1",
     "port": 18982,
-    "username": "--rpc-username", //monero based wallet authentication
     "password": "--rpc-password"
 },
 
