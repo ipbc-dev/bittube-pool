@@ -11,6 +11,8 @@
     "cnAlgorithm": "cryptonight_heavy",
     "cnVariant": 2,
     "cnBlobType": 0,
+    "includeHeight": false,
+    "isRandomX": false,
 
     "logging": {
         "files": {
